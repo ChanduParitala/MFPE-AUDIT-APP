@@ -1,0 +1,8 @@
+package com.restFul.demo.services;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class userDaoService {
+
+}

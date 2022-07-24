@@ -1,0 +1,33 @@
+package com.restFul.demo.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.restFul.demo.model.RestObject;
+import com.restFul.demo.services.userDaoService;
+
+@RestController
+public class RestFulDemoController {
+	
+	@Autowired
+	private userDaoService service;
+
+	@GetMapping(path = "/Login")
+	public String LoginPage() {
+		return "Login";
+	}
+	
+	@GetMapping(path = "/Objects")
+	public RestObject getRestObject()
+	{
+		return new RestObject("This is the object");
+	}
+	
+	@GetMapping(path = "/Objects/{name}")
+	public RestObject getRestObjectMessageByName(@PathVariable String name)
+	{
+		return new RestObject(String.format("This is the object,%s",name));
+	}
+}

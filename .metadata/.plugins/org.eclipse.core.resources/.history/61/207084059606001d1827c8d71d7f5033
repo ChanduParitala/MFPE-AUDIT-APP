@@ -1,0 +1,69 @@
+package com.restFul.demo.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.restFul.demo.model.RestObject;
+import com.restFul.demo.model.User;
+import com.restFul.demo.services.userDaoService;
+
+@RestController
+public class RestFulDemoController {
+	
+	@Autowired
+	private userDaoService service;
+
+	@GetMapping(path = "/Login")
+	public String LoginPage() {
+		return "Login";
+	}
+	
+	@GetMapping(path = "/Objects")
+	public RestObject getRestObject()
+	{
+		return new RestObject("This is the object");
+	}
+	
+	@GetMapping(path = "/Objects/{name}")
+	public RestObject getRestObjectMessageByName(@PathVariable String name)
+	{
+		return new RestObject(String.format("This is the object,%s",name));
+	}
+	
+	
+	@GetMapping(path ="/")
+	public List<User> FindAll()
+	{
+		return service.FindAll();
+	}
+	
+	@GetMapping(path ="/find/{user}")
+	public User FindUser(@PathVariable String user)
+	{
+		return service.FindUser(user);
+	}
+	
+	@GetMapping(path ="/remove/{user}")
+	public List<User> removeUser(@PathVariable String user)
+	{
+		return service.removeUser(user);
+	}
+	
+	@PostMapping(path ="/users")
+	public void createUser(@RequestBody User user)
+	{
+		service.create(user);
+	}
+	
+	@GetMapping(path ="/count")
+	public int getCount()
+	{
+		return service.getCount();
+	}
+}

@@ -1,0 +1,12 @@
+package com.restFul.demo.services;
+
+import java.util.ArrayList;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class userDaoService {
+	
+	private List<user> users = new ArrayList<>();
+
+}

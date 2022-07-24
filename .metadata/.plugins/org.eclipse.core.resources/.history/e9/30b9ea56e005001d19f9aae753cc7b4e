@@ -1,0 +1,20 @@
+package com.restFul.demo.services;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Component;
+import com.restFul.demo.model.user;
+
+@Component
+public class userDaoService {
+	
+	private List<user> users = new ArrayList<>();
+	
+	static {
+		users.add(new user("Chandan", "cp3003"));
+		users.add("SARS", "sars3003");
+		users.add("Liks", "lsid3003");
+	}
+
+}

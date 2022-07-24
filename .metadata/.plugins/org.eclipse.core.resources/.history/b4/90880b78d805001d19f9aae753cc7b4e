@@ -1,0 +1,8 @@
+package com.restFul.demo.model;
+
+public class user {
+	private String userName, password;
+	
+	
+
+}

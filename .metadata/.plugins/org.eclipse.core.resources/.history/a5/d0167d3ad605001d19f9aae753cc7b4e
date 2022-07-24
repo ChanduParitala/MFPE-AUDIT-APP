@@ -1,0 +1,27 @@
+package com.restFul.demo.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.restFul.demo.model.RestObject;
+import com.restFul.demo.services.RestService;
+
+@RestController
+public class RestFulDemoController {
+	
+	@Autowired
+	private RestService service;
+
+	@GetMapping(path = "/Login")
+	public String LoginPage() {
+		return "Login";
+	}
+	
+	@GetMapping(path = "/Objects")
+	public RestObject getRestObject()
+	{
+		return new RestObject("This is the object");
+	}
+}
